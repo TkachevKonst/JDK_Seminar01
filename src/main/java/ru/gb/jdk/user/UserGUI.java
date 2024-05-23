@@ -22,6 +22,7 @@ public class UserGUI extends JFrame {
     public UserGUI(ServerWindow serverWindow) {
         this.serverWindow = serverWindow;
         setSize(WIDTH, HEIGTH);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(serverWindow.getX() - 400, serverWindow.getY());
         setResizable(false);
         setTitle("User chat");
