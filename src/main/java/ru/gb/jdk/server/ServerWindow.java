@@ -12,15 +12,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ServerWindow extends JFrame {
-    private static final int WIDTH = 300;
-    private static final int HEIGTH = 200;
+    private  final int WIDTH = 300;
+    private  final int HEIGTH = 200;
     private ArrayList<UserGUI> clientGUIList;
-    public static final String LOG_PATH = "src/main/java/ru/gb/jdk/log.txt";
+    public  final String LOG_PATH = "src/main/java/ru/gb/jdk/log.txt";
 
-    private static JButton btnStart = new JButton("Start");
-    private static JButton btnStop = new JButton("Stop");
-    private static JTextArea info = new JTextArea();
-    private static boolean isServerWorking;
+    private  JButton btnStart = new JButton("Start");
+    private  JButton btnStop = new JButton("Stop");
+    private  JTextArea info = new JTextArea();
+    private  boolean isServerWorking;
 
     public ServerWindow() {
         clientGUIList = new ArrayList<>();
