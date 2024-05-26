@@ -13,11 +13,11 @@ public class UserGUI extends JFrame {
     private boolean connected = false;
     private String name;
 
-    JTextArea info;
-    JTextField IPAddress, Port, Login, Message;
-    JPasswordField password;
-    JButton btnLogin, btnSend;
-    JPanel headerPanel;
+    private JTextArea info;
+    private JTextField IPAddress, Port, Login, Message;
+    private JPasswordField password;
+    private JButton btnLogin, btnSend;
+    private JPanel headerPanel;
 
     public UserGUI(ServerWindow serverWindow) {
         this.serverWindow = serverWindow;

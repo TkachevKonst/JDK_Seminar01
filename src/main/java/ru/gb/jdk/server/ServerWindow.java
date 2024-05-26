@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ServerWindow extends JFrame {
-    private  final int WIDTH = 300;
-    private  final int HEIGTH = 200;
+    private  static final int WIDTH = 300;
+    private  static final int HEIGTH = 200;
     private ArrayList<UserGUI> clientGUIList;
     public  final String LOG_PATH = "src/main/java/ru/gb/jdk/log.txt";
 
