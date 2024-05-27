@@ -1,17 +1,16 @@
 package ru.gb.jdk.user;
 
-import ru.gb.jdk.server.ServerWindow;
+import ru.gb.jdk.server.ServerGUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class UserGUI extends JFrame {
+public class UserGUI extends JFrame implements Viev {
     private static final int WIDTH = 400;
     private static final int HEIGTH = 400;
-    private ServerWindow serverWindow;
-    private boolean connected = false;
-    private String name;
+
+
 
     private JTextArea info;
     private JTextField IPAddress, Port, Login, Message;
@@ -19,19 +18,23 @@ public class UserGUI extends JFrame {
     private JButton btnLogin, btnSend;
     private JPanel headerPanel;
 
-    public UserGUI(ServerWindow serverWindow) {
-        this.serverWindow = serverWindow;
-        setSize(WIDTH, HEIGTH);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocation(serverWindow.getX() - 400, serverWindow.getY());
-        setResizable(false);
-        setTitle("User chat");
+    private UserController userController;
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
+    }
+
+    public UserGUI() {
+        setting();
         creatWindow();
         setVisible(true);
     }
 
-    private void appendInfo(String text) {
-        info.append(text + "\n");
+    void setting() {
+        setSize(WIDTH, HEIGTH);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        setTitle("User chat");
     }
 
     private void creatWindow() {
@@ -50,7 +53,7 @@ public class UserGUI extends JFrame {
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                connectToServer();
+                login();
             }
         });
         headerPanel.add(IPAddress);
@@ -92,43 +95,24 @@ public class UserGUI extends JFrame {
         return new JScrollPane(info);
     }
 
-    private void connectToServer() {
-        if(serverWindow.connectUser(this)){
-        connected = true;
-        appendInfo("Подключение произошло успешно \n");
-        name = Login.getText();
-        headerPanel.setVisible(false);
-        String log = serverWindow.getInfo();
-        if (log != null) {
-            appendInfo(log);
-        } else appendInfo("Истроия сообщений пуста");
-
-        } else appendInfo("Подключение к серверу не удалось");
+    private void login() {
+        if (userController.connectToServer(Login.getText())) {
+            headerPanel.setVisible(false);
+        }
     }
+
+    public void showMessage(String text) {
+        info.append(text + "\n");
+    }
+
 
     public void disconnectToServer() {
-        if (connected) {
-            connected = false;
-            headerPanel.setVisible(true);
-            serverWindow.disconnectUser(this);
-            appendInfo("Сервер отключен");
-        }
+        headerPanel.setVisible(true);
     }
 
-    public void answer(String text) {
-        appendInfo(text);
-    }
 
     private void message() {
-        if (connected) {
-            String string = Message.getText();
-            if (!string.equals("")) {
-                serverWindow.message(name + ": " + string);
-                Message.setText("");
-            }
-            }else {
-            Message.setText("");
-            appendInfo("Сервер не подключен");
-        }
+        userController.message(Message.getText());
+        Message.setText("");
     }
 }
