@@ -53,7 +53,6 @@ public class ServerGUI extends JFrame implements Viev {
         JPanel panBottom = new JPanel(new GridLayout(1, 2));
         panBottom.add(btnStart);
         panBottom.add(btnStop);
-// переделать кнопки старт и стоп
         btnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
