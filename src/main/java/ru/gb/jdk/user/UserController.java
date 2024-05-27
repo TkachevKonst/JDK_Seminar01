@@ -1,9 +1,6 @@
 package ru.gb.jdk.user;
 
 import ru.gb.jdk.server.ServerController;
-import ru.gb.jdk.server.ServerGUI;
-
-import java.util.ArrayList;
 
 public class UserController {
 

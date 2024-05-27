@@ -1,6 +1,6 @@
 package ru.gb.jdk.user;
 
-import ru.gb.jdk.server.ServerGUI;
+
 
 import javax.swing.*;
 import java.awt.*;

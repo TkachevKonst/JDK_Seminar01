@@ -1,15 +1,10 @@
 package ru.gb.jdk.server;
 
-import ru.gb.jdk.user.UserGUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class ServerGUI extends JFrame implements Viev {
     private static final int WIDTH = 300;
